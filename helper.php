@@ -9,14 +9,17 @@ include ".config.php";
 $params = json_decode(file_get_contents('php://input'),true);
 $_POST = array_merge(isset($_POST) ? $_POST : array(), isset($params) ? $params : array());
 
+// get a list of top 20 movies
 if(isset($_POST['GetData'])) {
 	
 	// test data
 	// $data = array(
 	// 	array("title" => "test data", "release_date" => "test data", "vote_count" => 100, "id" => 1, "overview" => "an overview of text", "backdrop_path" => "imgurl", "poster_path" => "anotherimgurl")
 	// );
-	$data = connect("SELECT * FROM movies LIMIT 20")->fetchAll(PDO::FETCH_ASSOC);
+	$data = connect("SELECT * FROM movies ORDER BY vote_count DESC LIMIT 20")->fetchAll(PDO::FETCH_ASSOC);
 	$response = array();
+
+	// format it
 	foreach($data as $item) {
 		$response[] = array(
 			'title' => '<a class="movie" data-toggle="modal" data-target="#detail" data-item="'.$item['id'].'">' . $item['title'] . '</a>',
@@ -24,8 +27,8 @@ if(isset($_POST['GetData'])) {
 			'release_date' => date("m/d/Y", strtotime($item['release_date'])),
 			'vote_count' => $item['vote_count'],
 			'overview' => $item['overview'],
-			'backdrop_path' => " http://image.tmdb.org/t/p/original/" . $item['backdrop_path'],
-			'poster_path' => " http://image.tmdb.org/t/p/w185/" . $item['poster_path'],
+			'backdrop_path' => "http://image.tmdb.org/t/p/original/" . $item['backdrop_path'],
+			'poster_path' => "http://image.tmdb.org/t/p/w185/" . $item['poster_path'],
 			'id' => $item['id']
 		);
 	}
@@ -34,10 +37,19 @@ if(isset($_POST['GetData'])) {
 
 }
 
+// get the movie detail data
 if(isset($_POST['GetMovie'])) {
 	$id = $_POST['GetMovie'];
 	$data = connect("SELECT * FROM movies WHERE id = :id", array(":id" => $id))->fetchAll(PDO::FETCH_ASSOC);
-	$data[0]['genre_ids'] = json_decode($data[0]['genre_ids']);
+	$data[0]['genre_ids'] 		= json_decode($data[0]['genre_ids']); // dont double convert the json
+
+	// create urls
+	$data[0]['backdrop_path'] 	= "http://image.tmdb.org/t/p/original/" . $data[0]['backdrop_path'];
+	$data[0]['poster_path'] 	= "http://image.tmdb.org/t/p/w185/" . $data[0]['poster_path'];
+
+	// not really needed now
+	$data[0]['title_reg'] 		= $item['title'];
+
 	echo json_encode($data[0]);
 }
 
