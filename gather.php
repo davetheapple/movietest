@@ -46,6 +46,7 @@ for($i = 1; $i <= 5; $i++) {
 	if(isset($data->results)) {
 		$columns = "(`".implode("`,`", $ref)."`)";
 		$insert = "INSERT INTO `movies` $columns VALUES";
+		$update = " ON DUPLICATE KEY UPDATE ";
 		$count = 0;
 		foreach($data->results as $movie) {
 
@@ -62,10 +63,14 @@ for($i = 1; $i <= 5; $i++) {
 			$insert .= "),";
 			
 			$count++;
-
+		}
+		foreach($ref as $col) {
+			$update .= "movies.$col = VALUES(movies.$col),";
 		}
 		$insert = rtrim($insert, ",");
+		$update = rtrim($iupdate, ",");
 		echo "Inserting page $i of " . $data->total_results . " Movies.\n";
+		
 		connect($insert);
 		ob_flush();
 
