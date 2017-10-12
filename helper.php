@@ -5,17 +5,16 @@ ini_set('display_errors', 1);
 
 include ".config.php";
 
-// $params = json_decode(file_get_contents('php://input'),true);
-// var_dump($params);die();
-// $_POST = array_merge(isset($_POST) ? $_POST : array(), $params);
+$params = json_decode(file_get_contents('php://input'),true);
+$_POST = array_merge(isset($_POST) ? $_POST : array(), $params);
 
 if(isset($_POST['GetData'])) {
 	
 	// test data
-	$data = array(
-		array("title" => "test data", "release_date" => "test data", "vote_count" => 100)
-	);
-	//$data = connect("SELECT * FROM movies")->fetchAll(PDO::FETCH_ASSOC);
+	// $data = array(
+	// 	array("title" => "test data", "release_date" => "test data", "vote_count" => 100)
+	// );
+	$data = connect("SELECT * FROM movies")->fetchAll(PDO::FETCH_ASSOC);
 	echo json_encode($data);
 
 }
