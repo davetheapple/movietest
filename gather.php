@@ -71,7 +71,7 @@ for($i = 1; $i <= 5; $i++) {
 		$update = rtrim($iupdate, ",");
 		echo "Inserting page $i of " . $data->total_results . " Movies.\n";
 		
-		connect($insert);
+		connect($insert . $update);
 		ob_flush();
 
 	} else if(isset($data->success)) {
