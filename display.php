@@ -36,8 +36,8 @@
         	<div ng-controller="movieController as ctrl">
         		<table datatable="" dt-options="ctrl.dtOptions" dt-columns="ctrl.dtColumns" class="row-border hover" ></table>
         		<!-- Modal -->
-				<div id="detail" class="modal fade" role="dialog" style="background-image: {{selected.backdrop_pack}}">
-					<div class="modal-dialog">
+				<div id="detail" class="modal fade" role="dialog" >
+					<div class="modal-dialog" style="background-image: {{selected.backdrop_pack}}">
 						<!-- Modal content-->
 						<div class="modal-content">
 							<div class="modal-header">
