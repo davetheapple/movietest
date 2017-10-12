@@ -20,7 +20,10 @@ if(isset($_POST['GetData'])) {
 		$response[] = array(
 			'title' => '<a class="movie" data-toggle="modal" data-target="#detail" data-item="'.$item['title'].'">' . $item['title'] . '</a>',
 			'release_date' => $item['release_date'],
-			'vote_count' => $item['vote_count']
+			'vote_count' => $item['vote_count'],
+			'description' => $item['description'],
+			'backdrop_path' => " http://image.tmdb.org/t/p/original/" . $item['backdrop_path'],
+			'poster_path' => " http://image.tmdb.org/t/p/w185/" . $item['poster_path']
 		);
 	}
 	
