@@ -9,6 +9,7 @@
 	4. Display data with angular binding and angular datatables
 	5. Retrieve/display detail data using Angulars $http, JSON, and a bootstrap modal.
 */
+ob_start();
 
 include "helper.php";
 
@@ -64,9 +65,9 @@ for($i = 1; $i <= 5; $i++) {
 
 		}
 		$insert = rtrim($insert, ",");
-		echo "Inserting 100 of " . $data->total_results . " Movies.\n";
+		echo "Inserting page $i of " . $data->total_results . " Movies.\n";
 		connect($insert);
-		echo "\nComplete.\n";
+		ob_flush();
 
 	} else if(isset($data->success)) {
 		echo $data->status_code . "\n";
@@ -76,4 +77,5 @@ for($i = 1; $i <= 5; $i++) {
 	}
 	sleep(2);
 }
+echo "\nComplete.\n";
 echo "</xmp>";
