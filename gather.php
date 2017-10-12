@@ -16,7 +16,7 @@ ini_set('display_errors', 1);
 include ".config.php";
 
 // table reference minus `id`
-$ref = [
+$ref = array(
 	"adult",
 	"backdrop_path",
 	"genre_ids",
@@ -30,16 +30,16 @@ $ref = [
 	"video",
 	"vote_average",
 	"vote_count"
-];
+);
 
 echo "<xmp>";
 
-$filters = [
+$filters = array(
 	"certification" 		=> "R",
 	"primary_release_date" 	=> "2015",
 	"with_genre"			=> "878",
 	"sort_by" 				=> "popularity.desc"
-];
+);
 $data =  json_decode(gather("discover", "movie", $filters));
 
 if(isset($data->results)) {
@@ -93,7 +93,7 @@ function gather($search, $type, $values) {
 	return $server_output;
 }
 
-function connect($cmd, $arr = []) {
+function connect($cmd, $arr = array()) {
 
     # database login
     global $host;
