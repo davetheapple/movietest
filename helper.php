@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include ".config.php";
+//include ".config.php";
 
 $params = json_decode(file_get_contents('php://input'),true);
 $_POST = array_merge(isset($_POST) ? $_POST : array(), $params);
@@ -11,11 +11,20 @@ $_POST = array_merge(isset($_POST) ? $_POST : array(), $params);
 if(isset($_POST['GetData'])) {
 	
 	// test data
-	// $data = array(
-	// 	array("title" => "test data", "release_date" => "test data", "vote_count" => 100)
-	// );
-	$data = connect("SELECT * FROM movies")->fetchAll(PDO::FETCH_ASSOC);
-	echo json_encode($data);
+	$data = array(
+		array("title" => "test data", "release_date" => "test data", "vote_count" => 100)
+	);
+	//$data = connect("SELECT * FROM movies")->fetchAll(PDO::FETCH_ASSOC);
+	$response = array();
+	foreach($data as $item) {
+		$response[] = array(
+			'title' => '<a class="movie" data-toggle="modal" data-target="#detail" data-item="'.$item['title'].'">' . $item['title'] . '</a>',
+			'release_date' => $item['release_date'],
+			'vote_count' => $item['vote_count']
+		);
+	}
+	
+	echo json_encode($response);
 
 }
 

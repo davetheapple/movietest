@@ -30,9 +30,9 @@ angular.module('MovieApp', ['datatables'])
     }
 })
 
-.controller("movieController", function($scope, $http, DTColumnBuilder, DTOptionsBuilder, apiService) {
-	var vm = this;///WorkProjects/CandidateTest/
-	var promise = apiService.api("/barrerad/helper.php", {GetData: 1});
+.controller("movieController", function($scope, $http, $timeout, $compile, DTColumnBuilder, DTOptionsBuilder, apiService) {
+	var vm = this;///barrerad/
+	var promise = apiService.api("/WorkProjects/CandidateTest/helper.php", {GetData: 1});
 
 	$scope.theList = [];
 
@@ -50,6 +50,33 @@ angular.module('MovieApp', ['datatables'])
 
     promise.then(function(data) {
     	$scope.theList = data;
+
+    	// not the angular way but still effective
+    	// directive didnt seem to work 
+    	$timeout(function() { 
+	    	$(".movie").each(function(idx, item) {
+	    		$(item).on("click", function() {
+	    			for(var i = 0; i < $scope.theList.length; i++){
+	    				if($scope.theList[i].title == $(this).data("item")) {
+	    					$scope.selected = $scope.theList[i];
+	    					break;
+	    				}
+	    			}
+	    		});
+	    	});
+	    },500);
     });
    
+})
+
+.directive("openEvent", function () {
+    return {
+        link: function ($scope) {
+        	// i don't have much time to solve this, mostly 
+        	// its probably because of the digest and in a $timeout everything is updated
+            jQuery("a.movie").on("click", function (event) {
+                console.log($(this).html());
+            });
+        }
+    }
 });
