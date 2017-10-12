@@ -32,45 +32,48 @@ $ref = array(
 
 echo "<xmp>";
 
-$filters = array(
-	"certification" 		=> "R",
-	"primary_release_date" 	=> "2015",
-	"with_genre"			=> "878",
-	"sort_by" 				=> "popularity.desc",
-	"page" 					=> "5"
-);
-$data =  json_decode(gather("discover", "movie", $filters));
+for($i = 1; $i <= 5; $i++) {
+	$filters = array(
+		"certification" 		=> "R",
+		"primary_release_date" 	=> "2015",
+		"with_genre"			=> "878",
+		"sort_by" 				=> "popularity.desc",
+		"page" 					=> $i
+	);
+	$data =  json_decode(gather("discover", "movie", $filters));
 
-if(isset($data->results)) {
-	$columns = "(`".implode("`,`", $ref)."`)";
-	$insert = "INSERT INTO `movies` $columns VALUES";
-	$count = 0;
-	foreach($data->results as $movie) {
+	if(isset($data->results)) {
+		$columns = "(`".implode("`,`", $ref)."`)";
+		$insert = "INSERT INTO `movies` $columns VALUES";
+		$count = 0;
+		foreach($data->results as $movie) {
 
-		if($count > 100) break;
+			if($count > 100) break;
 
-		$insert .= "(";
-		foreach($ref as $col) {
+			$insert .= "(";
+			foreach($ref as $col) {
 
-			if($col == "genre_ids" ) $insert .= "'" . json_encode($movie->{$col}) . "',";
-			else if($col == "adult" || $col == "video" ) $insert .= "'" . ($movie->{$col} ? "true" : "false") . "',";
-			else $insert .= "'" . addslashes($movie->{$col}) . "',";
+				if($col == "genre_ids" ) $insert .= "'" . json_encode($movie->{$col}) . "',";
+				else if($col == "adult" || $col == "video" ) $insert .= "'" . ($movie->{$col} ? "true" : "false") . "',";
+				else $insert .= "'" . addslashes($movie->{$col}) . "',";
+			}
+			$insert = rtrim($insert, ",");
+			$insert .= "),";
+			
+			$count++;
+
 		}
 		$insert = rtrim($insert, ",");
-		$insert .= "),";
-		
-		$count++;
+		echo "Inserting 100 of " . $data->total_results . " Movies.\n";
+		connect($insert);
+		echo "\nComplete.\n";
 
+	} else if(isset($data->success)) {
+		echo $data->status_code . "\n";
+		echo $data->status_message . "\n";
+	} else {
+		echo "Something has gone horribly wrong.";
 	}
-	$insert = rtrim($insert, ",");
-	echo "Inserting 100 of " . $data->total_results . " Movies.\n";
-	connect($insert);
-	echo "\nComplete.\n";
-
-} else if(isset($data->success)) {
-	echo $data->status_code . "\n";
-	echo $data->status_message . "\n";
-} else {
-	echo "Something has gone horribly wrong.";
+	sleep(2);
 }
 echo "</xmp>";

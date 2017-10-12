@@ -7,7 +7,7 @@ date_default_timezone_set ("America/Boise");
 include ".config.php";
 
 $params = json_decode(file_get_contents('php://input'),true);
-$_POST = array_merge(isset($_POST) ? $_POST : array(), $params);
+$_POST = array_merge(isset($_POST) ? $_POST : array(), isset($params) ? $params : array());
 
 if(isset($_POST['GetData'])) {
 	
