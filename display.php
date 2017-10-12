@@ -45,7 +45,7 @@
 								<h4 class="modal-title">Movie Details</h4>
 							</div>
 							<div class="modal-body">
-								<img ng-src="{{selected.poster_path}}"
+								<img ng-src="{{selected.poster_path}}">
 								<p>{{selected.title}}</p>
 							</div>
 							<div class="modal-footer">
