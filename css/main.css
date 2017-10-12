@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+	background:whitesmoke;
+	font-family:"Open Sans", Helvetica;
+}
+
+
+.dataTables_wrapper {
+    margin: 2em;
+    border: solid thin #e9e9e9;
+    padding: 2em;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.09);
+    background:white;
+}
+
+input[type="search"] {
+    border: solid thin silver;
+    border-radius: 4px;
+}
+
+/* overrride datatables */
+a.paginate_button.current {
+    border-radius: 50px!important;
+    padding: 0px 6px!important;
+    background: #cee9ff!important;
+    border: none!important;
+    color: white!important;
+}
