@@ -48,7 +48,7 @@ if(isset($_POST['GetMovie'])) {
 	$data[0]['poster_path'] 	= "http://image.tmdb.org/t/p/w185/" . $data[0]['poster_path'];
 
 	// not really needed now
-	$data[0]['title_reg'] 		= $item['title'];
+	$data[0]['title_reg'] 		= $data[0]['title'];
 
 	echo json_encode($data[0]);
 }
