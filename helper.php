@@ -12,10 +12,10 @@ include ".config.php";
 if(isset($_POST['GetData'])) {
 	
 	// test data
-	// $data = array(
-	// 	array("title" => "test data", "release_date" => "test data", "vote_count" => 100)
-	// );
-	$data = connect("SELECT * FROM movies")->fetchAll(PDO::FETCH_ASSOC);
+	$data = array(
+		array("title" => "test data", "release_date" => "test data", "vote_count" => 100)
+	);
+	//$data = connect("SELECT * FROM movies")->fetchAll(PDO::FETCH_ASSOC);
 	echo json_encode($data);
 
 }
