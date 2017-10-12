@@ -65,8 +65,7 @@ if(isset($data->results)) {
 	}
 	$insert = rtrim($insert, ",");
 	echo "Inserting 100 of " . $data->total_results . " Movies.\n";
-	echo $insert;
-	//connect($insert);
+	connect($insert);
 	echo "\nComplete.\n";
 
 } else if(isset($data->success)) {
