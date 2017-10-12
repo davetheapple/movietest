@@ -18,12 +18,13 @@ if(isset($_POST['GetData'])) {
 	$response = array();
 	foreach($data as $item) {
 		$response[] = array(
-			'title' => '<a class="movie" data-toggle="modal" data-target="#detail" data-item="'.$item['title'].'">' . $item['title'] . '</a>',
+			'title' => '<a class="movie" data-toggle="modal" data-target="#detail" data-item="'.$item['id'].'">' . $item['title'] . '</a>',
 			'release_date' => $item['release_date'],
 			'vote_count' => $item['vote_count'],
 			'overview' => $item['overview'],
 			'backdrop_path' => " http://image.tmdb.org/t/p/original/" . $item['backdrop_path'],
-			'poster_path' => " http://image.tmdb.org/t/p/w185/" . $item['poster_path']
+			'poster_path' => " http://image.tmdb.org/t/p/w185/" . $item['poster_path'],
+			'id' => $item['id']
 		);
 	}
 	

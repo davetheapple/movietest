@@ -57,7 +57,8 @@ angular.module('MovieApp', ['datatables'])
 	    	$(".movie").each(function(idx, item) {
 	    		$(item).on("click", function() {
 	    			for(var i = 0; i < $scope.theList.length; i++){
-	    				if($scope.theList[i].title == $(this).data("item")) {
+	    				console.log($scope.theList[i].id," == ",$(this).data("item"));
+	    				if($scope.theList[i].id == $(this).data("item")) {
 	    					$scope.selected = $scope.theList[i];
 	    					console.log($scope.selected);
 	    					break;
