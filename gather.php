@@ -10,9 +10,6 @@
 	5. Retrieve/display detail data using Angulars $http, JSON, and a bootstrap modal.
 */
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 include "helper.php";
 
 // table reference minus `id`
