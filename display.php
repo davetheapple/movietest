@@ -37,7 +37,7 @@
         		<table datatable="" dt-options="ctrl.dtOptions" dt-columns="ctrl.dtColumns" class="row-border hover" ></table>
         		<!-- Modal -->
 				<div id="detail" class="modal fade" role="dialog" >
-					<div class="modal-dialog" style="background-image: {{selected.backdrop_pack}}">
+					<div class="modal-dialog" style="background-image: {{selected.backdrop_path}}">
 						<!-- Modal content-->
 						<div class="modal-content">
 							<div class="modal-header">
@@ -45,6 +45,7 @@
 								<h4 class="modal-title">Movie Details</h4>
 							</div>
 							<div class="modal-body">
+								<img ng-src="{{selected.poster_path}}"
 								<p>{{selected.title}}</p>
 							</div>
 							<div class="modal-footer">

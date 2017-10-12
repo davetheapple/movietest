@@ -59,11 +59,13 @@ angular.module('MovieApp', ['datatables'])
 	    			for(var i = 0; i < $scope.theList.length; i++){
 	    				if($scope.theList[i].title == $(this).data("item")) {
 	    					$scope.selected = $scope.theList[i];
+
 	    					break;
 	    				}
 	    			}
 	    		});
 	    	});
+	    	$scope.$apply();
 	    },500);
     });
    
