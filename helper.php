@@ -19,6 +19,7 @@ if(isset($_POST['GetData'])) {
 	foreach($data as $item) {
 		$response[] = array(
 			'title' => '<a class="movie" data-toggle="modal" data-target="#detail" data-item="'.$item['id'].'">' . $item['title'] . '</a>',
+			'title_reg' => $item['title'],
 			'release_date' => $item['release_date'],
 			'vote_count' => $item['vote_count'],
 			'overview' => $item['overview'],
