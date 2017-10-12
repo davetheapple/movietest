@@ -5,9 +5,9 @@ ini_set('display_errors', 1);
 
 include ".config.php";
 
-$params = json_decode(file_get_contents('php://input'),true);
-var_dump($params);die();
-$_POST = array_merge(isset($_POST) ? $_POST : array(), $params);
+// $params = json_decode(file_get_contents('php://input'),true);
+// var_dump($params);die();
+// $_POST = array_merge(isset($_POST) ? $_POST : array(), $params);
 
 if(isset($_POST['GetData'])) {
 	
