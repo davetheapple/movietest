@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-//include ".config.php";
+include ".config.php";
 
 $params = json_decode(file_get_contents('php://input'),true);
 $_POST = array_merge(isset($_POST) ? $_POST : array(), $params);
