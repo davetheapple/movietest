@@ -31,8 +31,8 @@ angular.module('MovieApp', ['datatables'])
 })
 
 .controller("movieController", function($scope, $http, $timeout, $compile, DTColumnBuilder, DTOptionsBuilder, apiService) {
-	var vm = this;///barrerad/
-	var promise = apiService.api("/WorkProjects/CandidateTest/helper.php", {GetData: 1});
+	var vm = this;///WorkProjects/CandidateTest/
+	var promise = apiService.api("/barrerad/helper.php", {GetData: 1});
 
 	$scope.theList = [];
 
