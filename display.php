@@ -39,7 +39,7 @@
 				<div id="detail" class="modal fade" role="dialog" >
 					<div class="modal-dialog">
 						<!-- Modal content-->
-						<div class="modal-content" style="background: url({{selected.backdrop_path}}) no-repeat; background-size: cover;">
+						<div class="modal-content" style="background-image: url({{selected.backdrop_path}}); background-repeat: no-repeat; background-size: cover; background-color: white;">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								<h4 class="modal-title">{{selected.title_reg}}</h4>
