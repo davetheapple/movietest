@@ -47,11 +47,11 @@
 							<div class="modal-body">
 								<h3>{{selected.title_reg}}</h3>
 								<div class="row">
-									<div class="col-md-4">
-								<img ng-src="{{selected.poster_path}}">
-							</div>
-							<div class="col-md-8"><p>{{selected.overview}}</p></div>
-							</div>
+									<div class="col-md-4 col-sm-4">
+										<img ng-src="{{selected.poster_path}}" class="poster">
+									</div>
+									<div class="col-md-8 col-sm-8"><p class="desc">{{selected.overview}}</p></div>
+								</div>
 								
 							</div>
 							<div class="modal-footer">

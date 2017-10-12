@@ -28,3 +28,9 @@ a.paginate_button.current {
     border: none!important;
     color: white!important;
 }
+
+.modal-footer, .modal-header {
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 3px black;
+    border: none;
+}
