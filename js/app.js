@@ -31,8 +31,8 @@ angular.module('MovieApp', ['datatables'])
 })
 
 .controller("movieController", function($scope, $http, $timeout, $compile, DTColumnBuilder, DTOptionsBuilder, apiService) {
-	var vm = this;///WorkProjects/CandidateTest/
-	var promise = apiService.api("/barrerad/helper.php", {GetData: 1});
+	var vm = this;///barrerad/
+	var promise = apiService.api("/WorkProjects/CandidateTest/helper.php", {GetData: 1});
 
 	$scope.theList = [];
 
@@ -57,10 +57,8 @@ angular.module('MovieApp', ['datatables'])
 	    	$(".movie").each(function(idx, item) {
 	    		$(item).on("click", function() {
 	    			for(var i = 0; i < $scope.theList.length; i++){
-	    				console.log($scope.theList[i].id," == ",$(this).data("item"));
 	    				if($scope.theList[i].id == $(this).data("item")) {
-	    					$scope.selected = $scope.theList[i];
-	    					console.log($scope.selected);
+	    					$timeout(function() { $scope.selected = $scope.theList[i]; },500); // terrible
 	    					break;
 	    				}
 	    			}

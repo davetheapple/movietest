@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include ".config.php";
+//include ".config.php";
 
 $params = json_decode(file_get_contents('php://input'),true);
 $_POST = array_merge(isset($_POST) ? $_POST : array(), $params);
@@ -12,7 +12,7 @@ if(isset($_POST['GetData'])) {
 	
 	// test data
 	$data = array(
-		array("title" => "test data", "release_date" => "test data", "vote_count" => 100)
+		array("title" => "test data", "release_date" => "test data", "vote_count" => 100, "id" => 1, "overview" => "an overview of text", "backdrop_path" => "imgurl", "poster_path" => "anotherimgurl")
 	);
 	$data = connect("SELECT * FROM movies")->fetchAll(PDO::FETCH_ASSOC);
 	$response = array();
