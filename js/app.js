@@ -58,7 +58,8 @@ angular.module('MovieApp', ['datatables'])
 	    		$(item).on("click", function() {
 	    			for(var i = 0; i < $scope.theList.length; i++){
 	    				if($scope.theList[i].id == $(this).data("item")) {
-	    					$timeout(function() { $scope.selected = $scope.theList[i]; },500); // terrible
+	    					//$timeout(function() { $scope.selected = $scope.theList[i]; },500); // terrible
+	    					apiService.api("/barrerad/helper.php", {GetMovie: $scope.theList[i].id}).then(function(data) { $scope.selected = data; });
 	    					break;
 	    				}
 	    			}

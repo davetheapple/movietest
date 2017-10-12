@@ -12,10 +12,10 @@ $_POST = array_merge(isset($_POST) ? $_POST : array(), isset($params) ? $params 
 if(isset($_POST['GetData'])) {
 	
 	// test data
-	$data = array(
-		array("title" => "test data", "release_date" => "test data", "vote_count" => 100, "id" => 1, "overview" => "an overview of text", "backdrop_path" => "imgurl", "poster_path" => "anotherimgurl")
-	);
-	$data = connect("SELECT * FROM movies")->fetchAll(PDO::FETCH_ASSOC);
+	// $data = array(
+	// 	array("title" => "test data", "release_date" => "test data", "vote_count" => 100, "id" => 1, "overview" => "an overview of text", "backdrop_path" => "imgurl", "poster_path" => "anotherimgurl")
+	// );
+	$data = connect("SELECT * FROM movies LIMIT 20")->fetchAll(PDO::FETCH_ASSOC);
 	$response = array();
 	foreach($data as $item) {
 		$response[] = array(
@@ -32,6 +32,13 @@ if(isset($_POST['GetData'])) {
 	
 	echo json_encode($response);
 
+}
+
+if(isset($_POST['GetMovie'])) {
+	$id = $_POST['GetMovie'];
+	$data = connect("SELECT * FROM movies WHERE id = :id", array(":id" => $id))->fetchAll(PDO::FETCH_ASSOC);
+	$data[0]['genre_ids'] = json_decode($data[0]['genre_ids']);
+	echo json_encode($data[0]);
 }
 
 
