@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:700');
 
 body * {
 	transition: ease .4s;
@@ -9,6 +9,9 @@ body {
 	font-family:"Open Sans", Helvetica;
 }
 
+h1,h2,h3,h4 {
+	font-family: "Roboto Slab";
+}
 
 .dataTables_wrapper {
     margin: 2em;
@@ -66,4 +69,11 @@ a.paginate_button.current {
     background-repeat: no-repeat;
     background-size: cover;
     background-color: white;
+}
+
+button.btn.btn-default {
+    background: #3d4144;
+    border: none;
+    color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.29);
 }

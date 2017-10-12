@@ -36,7 +36,8 @@ $filters = array(
 	"certification" 		=> "R",
 	"primary_release_date" 	=> "2015",
 	"with_genre"			=> "878",
-	"sort_by" 				=> "popularity.desc"
+	"sort_by" 				=> "popularity.desc",
+	"page" 					=> "5"
 );
 $data =  json_decode(gather("discover", "movie", $filters));
 
