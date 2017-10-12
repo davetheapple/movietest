@@ -41,7 +41,7 @@ angular.module('MovieApp', ['datatables'])
     
 
     vm.dtOptions = DTOptionsBuilder.fromFnPromise(
-    	apiService.api("/WorkProjects/CandidateTest/helper.php", {GetData: 1})
+    	apiService.api("/barrerad/helper.php", {GetData: 1})
     )
     .withPaginationType('full_numbers')
     .withOption('order', [[2, 'desc']]);
