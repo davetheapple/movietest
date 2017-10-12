@@ -68,7 +68,7 @@ for($i = 1; $i <= 5; $i++) {
 			$update .= "movies.$col = VALUES(movies.$col),";
 		}
 		$insert = rtrim($insert, ",");
-		$update = rtrim($iupdate, ",");
+		$update = rtrim($update, ",");
 		echo "Inserting page $i of " . $data->total_results . " Movies.\n";
 		
 		connect($insert . $update);
