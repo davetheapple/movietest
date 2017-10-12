@@ -43,13 +43,14 @@ $filters = array(
 $data =  json_decode(gather("discover", "movie", $filters));
 
 if(isset($data->results)) {
-	$insert = "INSERT INTO `movies` (`".implode("`,`", $ref)."`) \n";
+	$columns = "(`".implode("`,`", $ref)."`)";
+	$insert = "INSERT INTO `movies`";
 	$count = 0;
 	foreach($data->results as $movie) {
 
 		if($count > 100) break;
 
-		$insert .= "VALUES(";
+		$insert .= " $columns VALUES(";
 		foreach($ref as $col) {
 
 			if($col == "genre_ids" ) $insert .= "'" . implode(",", $movie->{$col}) . "',";
@@ -57,12 +58,12 @@ if(isset($data->results)) {
 			else $insert .= "'" . addslashes($movie->{$col}) . "',";
 		}
 		$insert = rtrim($insert, ",");
-		$insert .= "), \n";
+		$insert .= "),";
 		
 		$count++;
 
 	}
-	$insert = rtrim($insert, ", \n");
+	$insert = rtrim($insert, ",");
 	echo "Inserting 100 of " . $data->total_results . " Movies.\n";
 	connect($insert);
 	echo "\nComplete.\n";
