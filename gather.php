@@ -17,6 +17,7 @@ include ".config.php";
 
 // table reference minus `id`
 $ref = array(
+	"id",
 	"adult",
 	"backdrop_path",
 	"genre_ids",
