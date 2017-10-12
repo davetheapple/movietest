@@ -5,9 +5,11 @@ $_POST = array_merge($_POST, $params);
 
 if(isset($_POST['GetData'])) {
 	
-	$data = array(
-		array("id" => 1, "title" => "test data", "popularity" => 100)
-	);//connect("SELECT * FROM movies")->fetchAll(PDO::FETCH_ASSOC);
+	// test data
+	// $data = array(
+	// 	array("id" => 1, "title" => "test data", "popularity" => 100)
+	// );
+	$data = connect("SELECT * FROM movies")->fetchAll(PDO::FETCH_ASSOC);
 	echo json_encode($data);
 
 }
