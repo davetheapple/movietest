@@ -42,10 +42,9 @@
 						<div class="modal-content" style="background: url({{selected.backdrop_path}}) no-repeat; background-size: cover;">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Movie Details</h4>
+								<h4 class="modal-title">{{selected.title_reg}}</h4>
 							</div>
 							<div class="modal-body">
-								<h3>{{selected.title_reg}}</h3>
 								<div class="row">
 									<div class="col-md-4 col-sm-4">
 										<img ng-src="{{selected.poster_path}}" class="poster">

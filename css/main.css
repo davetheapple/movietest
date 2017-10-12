@@ -34,3 +34,22 @@ a.paginate_button.current {
     box-shadow: 0 0 3px black;
     border: none;
 }
+
+.desc {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1em;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    border-left: solid 3px #e95252;
+    box-shadow: 0 0 3px black;
+}
+
+.poster {
+    box-shadow: 0 0 3px black;
+    border: solid thin rgba(255, 255, 255, 0.37);
+    border-radius: 5px;
+}
+
+.modal-body {
+    background: rgba(255, 255, 255, 0.45);
+}
