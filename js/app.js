@@ -31,18 +31,25 @@ angular.module('MovieApp', ['datatables'])
 })
 
 .controller("movieController", function($scope, $http, DTColumnBuilder, DTOptionsBuilder, apiService) {
-	var vm = this;
+	var vm = this;///WorkProjects/CandidateTest/
+	var promise = apiService.api("/barrerad/helper.php", {GetData: 1});
+
+	$scope.theList = [];
+
 
 	vm.dtColumns = [
-        DTColumnBuilder.newColumn('id').withTitle('ID'),
         DTColumnBuilder.newColumn('title').withTitle('Title'),
-        DTColumnBuilder.newColumn('popularity').withTitle('Popularity')
+        DTColumnBuilder.newColumn('release_date').withTitle('Release Date'),
+        DTColumnBuilder.newColumn('vote_count').withTitle('Vote Count')
     ];
     
 
-    vm.dtOptions = DTOptionsBuilder.fromFnPromise(
-    	apiService.api("/barrerad/helper.php", {GetData: 1})
-    )
+    vm.dtOptions = DTOptionsBuilder.fromFnPromise(promise)
     .withPaginationType('full_numbers')
     .withOption('order', [[2, 'desc']]);
+
+    promise.then(function(data) {
+    	$scope.theList = data;
+    });
+   
 });

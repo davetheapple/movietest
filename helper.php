@@ -9,7 +9,7 @@ if(isset($_POST['GetData'])) {
 	
 	// test data
 	// $data = array(
-	// 	array("id" => 1, "title" => "test data", "popularity" => 100)
+	// 	array("title" => "test data", "release_date" => "test data", "vote_count" => 100)
 	// );
 	$data = connect("SELECT * FROM movies")->fetchAll(PDO::FETCH_ASSOC);
 	echo json_encode($data);

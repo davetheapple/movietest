@@ -54,7 +54,7 @@ if(isset($data->results)) {
 		$insert .= "(";
 		foreach($ref as $col) {
 
-			if($col == "genre_ids" ) $insert .= "'" . implode(",", $movie->{$col}) . "',";
+			if($col == "genre_ids" ) $insert .= "'" . json_encode($movie->{$col}) . "',";
 			else if($col == "adult" || $col == "video" ) $insert .= "'" . ($movie->{$col} ? "true" : "false") . "',";
 			else $insert .= "'" . addslashes($movie->{$col}) . "',";
 		}
