@@ -101,3 +101,7 @@ p.info {
     color: white;
     border-radius: 4px;
 }
+
+.info sub.pull-right {
+    margin-top: 10px;
+}

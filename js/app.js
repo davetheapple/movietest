@@ -46,7 +46,8 @@ angular.module('MovieApp', ['datatables'])
 
     vm.dtOptions = DTOptionsBuilder.fromFnPromise(promise)
     .withPaginationType('full_numbers')
-    .withOption('order', [[2, 'desc']]);
+    .withOption('order', [[2, 'desc']])
+    .withOption('pageLength', 50);
 
     promise.then(function(data) {
     	$scope.theList = data;
