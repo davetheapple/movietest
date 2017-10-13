@@ -49,7 +49,10 @@
 									<div class="col-md-4 col-sm-4">
 										<img ng-src="{{selected.poster_path}}" class="poster">
 									</div>
-									<div class="col-md-8 col-sm-8"><p class="desc">{{selected.overview}}</p></div>
+									<div class="col-md-8 col-sm-8">
+										<p class="desc">{{selected.overview}}</p>
+										<p class="info"><sub><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> {{selected.vote_count}}</sub> | <sub><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> {{selected.popularity}}</sub> | <sub><strong>{{selected.certification}}</strong></sub> | </p>
+									</div>
 								</div>
 								
 							</div>
@@ -63,7 +66,7 @@
         	</div>
         </div>
         <footer>
-        	<img src="https://www.themoviedb.org/assets/static_cache/9b3f9c24d9fd5f297ae433eb33d93514/images/v4/logos/408x161-powered-by-rectangle-green.png" width="300">
+        	<img src="https://www.themoviedb.org/assets/static_cache/9b3f9c24d9fd5f297ae433eb33d93514/images/v4/logos/408x161-powered-by-rectangle-green.png">
         </footer>
     </body>
 </html>

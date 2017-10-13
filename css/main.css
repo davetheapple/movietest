@@ -77,3 +77,14 @@ button.btn.btn-default {
     color: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.29);
 }
+
+footer img {
+    width: 150px;
+    margin: 2em;
+}
+
+
+footer {
+    text-align: center;
+    background: #2d2e30;
+}
