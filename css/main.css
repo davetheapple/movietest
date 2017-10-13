@@ -88,3 +88,8 @@ footer {
     text-align: center;
     background: #2d2e30;
 }
+
+p.info {
+    padding: 0 3px;
+    color: white;
+}

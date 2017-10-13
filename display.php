@@ -51,7 +51,7 @@
 									</div>
 									<div class="col-md-8 col-sm-8">
 										<p class="desc">{{selected.overview}}</p>
-										<p class="info"><sub><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> {{selected.vote_count}}</sub> | <sub><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> {{selected.popularity}}</sub> | <sub><strong>R</strong></sub> | </p>
+										<p class="info"><sub><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> {{selected.vote_count}}</sub> - <sub><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> {{selected.popularity}}</sub> - <sub><strong>R</strong></sub> | </p>
 									</div>
 								</div>
 								
