@@ -45,9 +45,7 @@ a.paginate_button.current {
 .desc {
     background: rgba(38, 40, 42, 0.74);
     padding: 1em;
-    border-bottom-right-radius: 8px;
-    border-top-right-radius: 8px;
-    border-left: solid 3px #d5d8db;
+        border-radius: 4px;
     color: white;
     font-size: 9pt;
     /* box-shadow: 0 0 3px black; */
@@ -98,7 +96,7 @@ p.info sub {
 
 
 p.info {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(38, 40, 42, 0.74);
     padding: 3px;
     color: white;
     border-radius: 4px;
