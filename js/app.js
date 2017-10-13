@@ -30,25 +30,27 @@ angular.module('MovieApp', ['datatables'])
     }
 })
 
+// main controller to run everything
 .controller("movieController", function($scope, $http, $timeout, $compile, DTColumnBuilder, DTOptionsBuilder, apiService) {
 	var vm = this;///WorkProjects/CandidateTest/
 	var promise = apiService.api("/barrerad/helper.php", {GetData: 1});
 
 	$scope.theList = [];
 
-
+	// display only these columns
 	vm.dtColumns = [
         DTColumnBuilder.newColumn('title').withTitle('Title'),
         DTColumnBuilder.newColumn('release_date').withTitle('Release Date'),
         DTColumnBuilder.newColumn('vote_count').withTitle('Vote Count')
     ];
     
-
+    // set table options
     vm.dtOptions = DTOptionsBuilder.fromFnPromise(promise)
     .withPaginationType('full_numbers')
     .withOption('order', [[2, 'desc']])
     .withOption('pageLength', 50);
 
+    // set up click events
     promise.then(function(data) {
     	$scope.theList = data;
 

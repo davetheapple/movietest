@@ -1,11 +1,12 @@
 <?php 
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 date_default_timezone_set ("America/Boise");
 
 include ".config.php";
 
+// get angular params
 $params = json_decode(file_get_contents('php://input'),true);
 $_POST = array_merge(isset($_POST) ? $_POST : array(), isset($params) ? $params : array());
 
@@ -53,7 +54,7 @@ if(isset($_POST['GetMovie'])) {
 	echo json_encode($data[0]);
 }
 
-
+// connect to the api
 function gather($search, $type, $values) {
 
 	$endpoint = "https://api.themoviedb.org/3/" . $search . "/" . $type;
@@ -71,6 +72,7 @@ function gather($search, $type, $values) {
 	return $server_output;
 }
 
+// database connector
 function connect($cmd, $arr = array()) {
 
     # database login
@@ -94,6 +96,7 @@ function connect($cmd, $arr = array()) {
     
 
     } catch (PDOException $e) {
+    	// should be in the error_log instead I think
         echo("\nCMD: \n$cmd\n");
         echo("\nERR:\n ".$e->getMessage() . "\n");
         

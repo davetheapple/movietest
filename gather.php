@@ -48,6 +48,8 @@ for($i = 1; $i <= 5; $i++) {
 		$insert = "INSERT INTO `movies` $columns VALUES";
 		$update = " ON DUPLICATE KEY UPDATE ";
 		$count = 0;
+
+		// generate the insert statement so it isnt running a whole bunch of inserts
 		foreach($data->results as $movie) {
 
 			if($count > 100) break;
@@ -64,13 +66,17 @@ for($i = 1; $i <= 5; $i++) {
 			
 			$count++;
 		}
+
+		// if there are duplicates just update them
 		foreach($ref as $col) {
 			$update .= "movies.$col = VALUES(movies.$col),";
 		}
+
 		$insert = rtrim($insert, ",");
 		$update = rtrim($update, ",");
 		echo "Inserting page $i of " . $data->total_results . " Movies.\n";
 		
+		// insert it
 		connect($insert . $update);
 		ob_flush();
 
